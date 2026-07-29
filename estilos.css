@@ -1,0 +1,238 @@
+*, *:before, *:after {
+    margin      : 0;
+    padding     : 0;
+    box-sizing  : border-box;
+    font-family : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin          : 0;
+    display         : flex;
+    justify-content : center;
+}
+
+/* Contenedor Max Width para centrar la App en pantallas gigantes */
+.caja-principal-app {
+    width     : 100%;
+    max-width : 1200px;
+}
+
+.encabezado-app {
+    text-align    : center;
+    margin-bottom : 2.5rem;
+
+    h1 {
+        color         : #2c3e50;
+        font-size     : 2.5rem;
+        margin-bottom : 0.5rem;
+    }
+
+    p {
+        color     : #7f8c8d;
+        font-size : 1.1rem;
+    }
+}
+
+/* ==========================================================================
+   2. ARQUITECTURA FLEXBOX (Distribución de Paneles)
+   ========================================================================== */
+.disposicion-contenido {
+    display        : flex;
+    flex-direction : column; /* Apilado vertical por defecto en móviles */
+    gap            : 2rem;
+}
+
+/* Estilo base para cada panel (Efecto Tarjeta Flotante) */
+.seccion-panel {
+    background-color : #ffffff;
+    border-radius    : 12px;
+    padding          : 1.8rem;
+    box-shadow       : 0 4px 6px rgba(0, 0, 0, 0.05);
+    border           : 1px solid #eef2f5;
+
+    h2 {
+        color          : #34495e;
+        font-size      : 1.4rem;
+        margin-bottom  : 1.5rem;
+        border-bottom  : 2px solid #f4f6f9;
+        padding-bottom : 0.5rem;
+    }
+}
+
+/* ==========================================================================
+   3. FORMULARIO FLEXBOX (.panel-formulario)
+   ========================================================================== */
+.formulario-flex {
+    display        : flex;
+    flex-direction : column;
+    gap            : 1.2rem;
+}
+
+.grupo-formulario {
+    display        : flex;
+    flex-direction : column;
+    gap            : 0.5rem;
+
+    label {
+        font-weight : 600;
+        color       : #4b5563;
+        font-size   : 0.95rem;
+    }
+}
+
+.entrada-formulario,
+.seleccion-formulario {
+    padding       : 0.8rem;
+    border        : 1px solid #d1d5db;
+    border-radius : 6px;
+    font-size     : 1rem;
+    outline       : none;
+    transition    : all 0.3s ease;
+
+    &:focus {
+        border-color : #2ecc71;
+        box-shadow   : 0 0 0 3px rgba(46, 204, 113, 0.15);
+    }
+}
+
+.boton-enviar {
+    background-color : #2ecc71;
+    color            : #ffffff;
+    border           : none;
+    padding          : 0.9rem;
+    font-size        : 1rem;
+    font-weight      : bold;
+    border-radius    : 6px;
+    cursor           : pointer;
+    transition       : background-color 0.2s ease;
+    margin-top       : 0.5rem;
+
+    &:disabled {
+        background-color : #bdc3c7;
+        color            : #7f8c8d; 
+        cursor           : not-allowed; 
+        transform        : none;
+        opacity          : 0.7; 
+    }
+
+    & hover {
+        background-color : #27ae60;
+    }
+}
+
+/* ==========================================================================
+   Estilos a las metricas
+   ========================================================================== */
+.contenedor-metricas {
+    display       : flex;
+    gap           : 1rem;
+    margin-bottom : 2rem;
+}
+
+.tarjeta-metrica {
+    flex           : 1; /* Hace que "Hoy" y "Mes" midan exactamente lo mismo */
+    padding        : 1.2rem;
+    border-radius  : 8px;
+    text-align     : center;
+    display        : flex;
+    flex-direction : column;
+    gap            : 0.4rem;
+}
+
+.tarjeta-hoy {
+    background-color : #ebf5fb;
+    border-left      : 4px solid #3498db;
+}
+
+.tarjeta-mes {
+    background-color : #f5eef8;
+    border-left      : 4px solid #9b59b6;
+}
+
+.tarjeta-metrica h3 {
+    font-size      : 0.9rem;
+    text-transform : uppercase;
+    letter-spacing : 0.5px;
+    color          : #566573;
+}
+
+/* Clase inyectada por JS para los números grandes */
+.monto-destacado {
+    font-size   : 1.8rem;
+    font-weight : 800;
+    color       : #2c3e50;
+}
+
+/* Área de Categorías */
+.caja-resumen-categorias h3 {
+    font-size     : 1.1rem;
+    color         : #7f8c8d;
+    margin-bottom : 1rem;
+}
+
+.lista-espacio-categorias {
+    display          : flex;
+    flex-direction   : column;
+    background-color : #fafbfc;
+    padding          : 1rem;
+    border-radius    : 8px;
+}
+
+/* ==========================================================================
+   ESTILOS PARA HISTORIAL DE GASTOS
+   ========================================================================== */
+.lista-espacio-historial {
+    display        : flex;
+    flex-direction : column;
+    max-height     : 400px;
+    overflow-y     : auto; /* Permite scroll interno si hay demasiados gastos */
+}
+
+/* Clases generadas dinámicamente desde JS */
+.tarjeta-gasto-item {
+    transition : background-color 0.2s ease;
+}
+
+.tarjeta-gasto-item:hover {
+    background-color : #fdfefe;
+}
+
+.boton-eliminar {
+    transition : background-color 0.2s ease, transform 0.1s ease;
+}
+
+.boton-eliminar:hover {
+    background-color : #c0392b !important;
+}
+
+.boton-eliminar:active {
+    transform : scale(0.95);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (Distribución Avanzada en Pantallas Grandes)
+   ========================================================================== */
+@media (min-width : 992px) {
+    .disposicion-contenido {
+        flex-direction : row; /* Los paneles se alinean en columnas horizontales */
+        flex-wrap      : wrap; /* Permite una rejilla flexible */
+        align-items    : start;
+    }
+
+    /* El formulario ocupa el 40% del ancho */
+    .panel-formulario {
+        flex      : 2;
+        min-width : 380px;
+    }
+
+    /* El cuadro de mando (Totales) ocupa el 60% restante */
+    .panel-cuadro-mando {
+        flex      : 3;
+        min-width : 450px;
+    }
+
+    /* El historial se posiciona abajo abarcando el 100% horizontal */
+    .panel-historial {
+        flex : 100%;
+    }
+}

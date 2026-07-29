@@ -3,34 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Descripción de la página">
-    <meta name="author" content="Tu Nombre">
-
-    <title>index</title>
-
-    <!-- Hojas de estilo (CSS) -->
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Control de Gastos Personales</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-<header>
-    <nav>
-        <!-- Menú de navegación -->
-    </nav>
-</header>
+<!-- Contenedor principal de la aplicación (Padre Flex General) -->
+<main id="contenedor-principal" class="caja-principal-app">
 
-<main>
-    <h1>Proyecto: index</h1>
-    <!-- El contenido principal va aquí -->
+    <header class="encabezado-app">
+        <h1>Mis Gastos Mensuales</h1>
+        <p>Monitorea tu dinero en tiempo real</p>
+    </header>
+    
+    <div class="disposicion-contenido">
+
+        <!-- FORMULARIO -->
+        <section class="seccion-panel panel-formulario">
+            <h2>Registrar Nuevo Gasto</h2>
+
+            <form id="formulario-gastos" class="formulario-flex">
+
+                <!-- INPUT DESCRIPCION -->
+                <div class="grupo-formulario">
+                    <label for="input-descripcion">Descripción del gasto</label>
+                    <input type="text" id="input-descripcion" class="entrada-formulario" placeholder="Ej: Café" required>
+                </div>
+
+                <!-- INPUT MONTO -->
+                <div class="grupo-formulario">
+                    <label for="input-monto">Monto ($)</label>
+                    <input type="number" id="input-monto" class="entrada-formulario" placeholder="Ej: 5000" min="1" required>
+                </div>
+
+                <!-- SELECT CON LAS OPCIONES -->
+                <div class="grupo-formulario">
+                    <label for="select-categoria">Categoría</label>
+                    <select id="select-categoria" class="seleccion-formulario" required>
+                        <option value="" disabled selected>Selecciona una opción...</option>
+                        <option value="comida">Comida</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="entretenimiento">Entretenimiento</option>
+                        <option value="servicios">Servicios</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+
+                <!-- boton -->
+                <button type="submit" id="boton-enviar" class="boton-enviar" disabled>
+                    Agregar Gasto
+                </button>
+
+            </form>
+        </section>
+
+        <!-- RESUEMENES -->
+        <section class="seccion-panel panel-cuadro-mando">
+            <h2>Resumen de Gastos</h2>
+
+            <!-- CONTENEDOR TOTALES -->
+            <div class="contenedor-metricas">
+
+                <!-- Gasto Diario -->
+                <article class="tarjeta-metrica tarjeta-hoy">
+                    <h3>Total de Hoy</h3>
+                    <div id="total-hoy" class="espacio-metrica"></div>
+                </article>
+
+                <!-- Gasto Mensual -->
+                <article class="tarjeta-metrica tarjeta-mes">
+                    <h3>Total del Mes</h3>
+                    <div id="total-mes" class="espacio-metrica"></div>
+                </article>
+
+            </div>
+
+            <!--Categorías -->
+            <div class="caja-resumen-categorias">
+                <h3>Gastos por Categoría</h3>
+                <div id="totales-categoria" class="lista-espacio-categorias"></div>
+            </div>
+        </section>
+
+        <!-- HISTORIAL -->
+        <section class="seccion-panel panel-historial">
+            <h2>Historial de Movimientos</h2>
+            <div id="lista-gastos" class="lista-espacio-historial"></div>
+        </section>
+    </div>
 </main>
-
-<footer>
-    <p>&copy; 2026 - Todos los derechos reservados</p>
-</footer>
-
-<!-- Scripts (JavaScript) -->
 <script src="app.js"></script>
 </body>
 </html>
